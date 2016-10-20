@@ -107,7 +107,7 @@ class TodoTableViewController: UITableViewController{
             // Delete the row from the data source
             print ("index path:")
             print (indexPath)
-            
+            completed_list[indexPath[1]]=0
             times.remove(at:indexPath[1])
             taskList.remove(at: indexPath[1])
             tableView.deleteRows(at: [indexPath], with: .fade)
