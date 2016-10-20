@@ -15,6 +15,7 @@ class TodoTableViewController: UITableViewController{
     var completed_items=[String]()
     
     let time_to_kill=24.0*60*60
+    
     var timer:Timer?
     func fireTimer(){
         for elem in times{
@@ -36,7 +37,7 @@ class TodoTableViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer=Timer.scheduledTimer(timeInterval: time_to_kill, target:self, selector:Selector(("fireTimer")), userInfo:nil,repeats:true )
+        timer=Timer.scheduledTimer(timeInterval: time_to_kill, target:self, selector:#selector(TodoTableViewController.fireTimer), userInfo:nil,repeats:true )
 
     }
 
@@ -74,8 +75,15 @@ class TodoTableViewController: UITableViewController{
         
         print ("here")
         print (cell.textLabel?.text)
+        if completed_items.contains(cell.cellName.text!){
+            
+        }else{
+            print ("set on")
+            cell.mySwitch.setOn(true, animated: true)
+        }
+        
         cell.callback = {(cell: myTableViewCell) -> () in
-            let i = tableView.indexPath(for: cell)
+//            let i = tableView.indexPath(for: cell)
             if cell.mySwitch.isOn{
                 completed-=1
             }else{
@@ -107,7 +115,8 @@ class TodoTableViewController: UITableViewController{
             // Delete the row from the data source
             print ("index path:")
             print (indexPath)
-            completed_list[indexPath[1]]=0
+            completed_list.remove(at:indexPath[1])
+            print (completed_list)
             times.remove(at:indexPath[1])
             taskList.remove(at: indexPath[1])
             tableView.deleteRows(at: [indexPath], with: .fade)

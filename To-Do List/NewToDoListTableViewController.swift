@@ -35,6 +35,7 @@ class NewToDoListTableViewController: UIViewController {
             // Get NSDate given the above date components
             let date = Date(timeIntervalSinceReferenceDate: 99999999999)
             completed_list.append(0)
+            print (completed_list)
             times.append(date as NSDate)
             self.view.endEditing(true)
             print (taskList)
