@@ -79,7 +79,7 @@ class TodoTableViewController: UITableViewController{
             
         }else{
             print ("set on")
-            cell.mySwitch.setOn(true, animated: true)
+            cell.mySwitch.setOn(true, animated: false)
         }
         
         cell.callback = {(cell: myTableViewCell) -> () in
