@@ -14,7 +14,7 @@ class TodoTableViewController: UITableViewController{
 
     var completed_items=[String]()
     
-    let time_to_kill=1.0
+    let time_to_kill=24.0*60*60
     var timer:Timer?
     func fireTimer(){
         for elem in times{
